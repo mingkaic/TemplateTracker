@@ -12,6 +12,10 @@
 		98ABB87A1B1B740D00CE20E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98ABB8791B1B740D00CE20E6 /* Images.xcassets */; };
 		98ABB87D1B1B740D00CE20E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98ABB87B1B1B740D00CE20E6 /* Main.storyboard */; };
 		98ABB8891B1B740D00CE20E6 /* TemplateTrackingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ABB8881B1B740D00CE20E6 /* TemplateTrackingTests.swift */; };
+		98ABB8941B1B7BB200CE20E6 /* parrotHead.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 98ABB8921B1B7BB200CE20E6 /* parrotHead.jpeg */; };
+		98ABB8951B1B7BB200CE20E6 /* parrot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 98ABB8931B1B7BB200CE20E6 /* parrot.jpg */; };
+		98ABB8971B1B82E100CE20E6 /* ColorHistogram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ABB8961B1B82E100CE20E6 /* ColorHistogram.swift */; };
+		98ABB8991B1BB7E700CE20E6 /* NStoCI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ABB8981B1BB7E700CE20E6 /* NStoCI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,10 @@
 		98ABB8821B1B740D00CE20E6 /* TemplateTrackingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TemplateTrackingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98ABB8871B1B740D00CE20E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98ABB8881B1B740D00CE20E6 /* TemplateTrackingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTrackingTests.swift; sourceTree = "<group>"; };
+		98ABB8921B1B7BB200CE20E6 /* parrotHead.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = parrotHead.jpeg; sourceTree = "<group>"; };
+		98ABB8931B1B7BB200CE20E6 /* parrot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = parrot.jpg; sourceTree = "<group>"; };
+		98ABB8961B1B82E100CE20E6 /* ColorHistogram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHistogram.swift; sourceTree = "<group>"; };
+		98ABB8981B1BB7E700CE20E6 /* NStoCI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NStoCI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,11 +83,15 @@
 		98ABB8721B1B740D00CE20E6 /* TemplateTracking */ = {
 			isa = PBXGroup;
 			children = (
+				98ABB8921B1B7BB200CE20E6 /* parrotHead.jpeg */,
+				98ABB8931B1B7BB200CE20E6 /* parrot.jpg */,
 				98ABB8751B1B740D00CE20E6 /* AppDelegate.swift */,
 				98ABB8771B1B740D00CE20E6 /* ViewController.swift */,
 				98ABB8791B1B740D00CE20E6 /* Images.xcassets */,
 				98ABB87B1B1B740D00CE20E6 /* Main.storyboard */,
 				98ABB8731B1B740D00CE20E6 /* Supporting Files */,
+				98ABB8961B1B82E100CE20E6 /* ColorHistogram.swift */,
+				98ABB8981B1BB7E700CE20E6 /* NStoCI.swift */,
 			);
 			path = TemplateTracking;
 			sourceTree = "<group>";
@@ -190,6 +202,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				98ABB87A1B1B740D00CE20E6 /* Images.xcassets in Resources */,
+				98ABB8951B1B7BB200CE20E6 /* parrot.jpg in Resources */,
+				98ABB8941B1B7BB200CE20E6 /* parrotHead.jpeg in Resources */,
 				98ABB87D1B1B740D00CE20E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +224,8 @@
 			files = (
 				98ABB8781B1B740D00CE20E6 /* ViewController.swift in Sources */,
 				98ABB8761B1B740D00CE20E6 /* AppDelegate.swift in Sources */,
+				98ABB8971B1B82E100CE20E6 /* ColorHistogram.swift in Sources */,
+				98ABB8991B1BB7E700CE20E6 /* NStoCI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +416,7 @@
 				98ABB88E1B1B740D00CE20E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		98ABB88F1B1B740D00CE20E6 /* Build configuration list for PBXNativeTarget "TemplateTrackingTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +425,7 @@
 				98ABB8911B1B740D00CE20E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
