@@ -28,7 +28,7 @@ struct ColorHistogram {
     
     init() {
         for i in 0...2047 {
-            histo.addObject(0)
+            histo.addObject(Int(0))
         }
     }
     
@@ -38,5 +38,9 @@ struct ColorHistogram {
     
     func histoGet(r: Double, g: Double, b: Double) -> Int {
         return Int(histo[histoMapping(r, g, b)] as! NSNumber)
+    }
+    
+    func histoCount(r: Double, g: Double, b: Double) {
+        histo[histoMapping(r, g, b)] = Int(histo[histoMapping(r, g, b)] as! NSNumber)+1
     }
 }

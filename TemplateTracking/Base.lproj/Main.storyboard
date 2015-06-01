@@ -697,7 +697,7 @@
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cAw-g5-FEW">
                                         <rect key="frame" x="-3" y="-3" width="358" height="494"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="parrotHead" id="Teh-wV-8M6"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="WhitePlainDot" id="Teh-wV-8M6"/>
                                         <connections>
                                             <action selector="dragAndDrop:" target="XfG-lQ-9wD" id="wRg-bA-9P5"/>
                                         </connections>
@@ -745,7 +745,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="WhitePlainDot" width="504" height="360"/>
         <image name="parrot" width="1024" height="768"/>
-        <image name="parrotHead" width="255" height="186"/>
     </resources>
 </document>

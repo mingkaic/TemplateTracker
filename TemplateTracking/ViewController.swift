@@ -24,43 +24,42 @@ class ViewController: NSViewController {
     @IBAction func Track(sender: AnyObject) {
         // access and convert images here
         var img = leftImageView.image?.CGImage
-        
-        getRGBFromImage(img!)
-    }
-    
-    func getRGBFromImage(imageRef: CGImageRef) -> [Double] {
-        let width = CGImageGetWidth(imageRef)
-        let height = CGImageGetHeight(imageRef)
-        let bitsPerComponent = CGImageGetBitsPerComponent(imageRef)
-        let bytesPerRow = CGImageGetBytesPerRow(imageRef)
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        
-        var rawData = UnsafeMutablePointer<Void>.alloc(bytesPerRow*height)
-        
-        let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-        
-        let context = CGBitmapContextCreate(rawData, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo | CGBitmapInfo.ByteOrder32Big)
-        CGContextDrawImage(context, CGRectMake(CGFloat(0), CGFloat(0), CGFloat(width), CGFloat(height)), imageRef)
-        
-        let count = width*height
-        // rawData contains data in RGBA8888 format.
-        var result = [Double]()
-        
-        for i in 0...count {
-            var c = rawData.memory
-            rawData = rawData.advancedBy(1)
+        var pixels = getRGBFromImage(img!)
+
+        for i in 0...pixels.count-1 {
+            modelHistogram.histoCount(Double(pixels[i].r), g: Double(pixels[i].g), b: Double(pixels[i].b))
         }
         
-        /*for i in 0...count {
-            var red   = (rawData[byteIndex])/255.0
-            var green = (rawData[byteIndex+1])/255.0
-            var blue  = (rawData[byteIndex+2])/255.0
-            var alpha = (rawData[byteIndex+3])/255.0
-            byteIndex += bytesPerPixel;
-            
-            UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-            [result addObject:acolor];
-        }*/
+        // get the background and start projecting
+        var targetImg = rightImageView.image?.CGImage
+        var bp = backProjectionFind(targetImg!)
+        
+        var sW = CGImageGetWidth(img)
+        var sH = CGImageGetHeight(img)
+        var bW = CGImageGetWidth(targetImg)
+        var bH = CGImageGetHeight(targetImg)
+        
+        var compareMatrix = [Double]()
+        
+        for x in 0...bW-sW-1 {
+            for y in 0...bH-sH-1 {
+                
+            }
+        }
+    }
+    
+    func getRGBFromImage(imageRef: CGImageRef) -> [PixelRGB] {
+        let count = CGImageGetWidth(imageRef)*CGImageGetHeight(imageRef)
+        let provider = CGImageGetDataProvider(imageRef)
+        let data: NSData = CGDataProviderCopyData(provider)
+        
+        var rawData: UnsafePointer = UnsafePointer<PixelRGB>(data.bytes)
+        var result = [PixelRGB]()
+        
+        for i in 0...count-1 {
+            result.append(rawData.memory)
+            rawData = rawData.advancedBy(1)
+        }
         
         return result;
     }
@@ -78,16 +77,29 @@ class ViewController: NSViewController {
     }
     
     // obtain the back projection (comparion matrix) for a single frame
-    func backProjectionFind(TargetImage: CIImage) {
+    func backProjectionFind(TargetImage: CGImageRef) -> [Double]{
         let imageHistogram = ColorHistogram()
         
+        var result = [Double]()
+        
         // obtain the histogram of the frame
+        var pixels = getRGBFromImage(TargetImage)
         
+        for i in 0...pixels.count-1 {
+            imageHistogram.histoCount(Double(pixels[i].r), g: Double(pixels[i].g), b: Double(pixels[i].b))
+        }
         
-        // obtain ratio histogram: min(model/image, 1)
-        
+        // obtain ratio histogram: min(model/image, 1) and back project at the same time
         // back projection: obtain an matrix of comparison values obtained from mapping pixels to ratio histogram
+        for i in 0...pixels.count-1 {
+            let r = Double(pixels[i].r)
+            let g = Double(pixels[i].g)
+            let b = Double(pixels[i].b)
+            let index = modelHistogram.histoGet(r, g: g, b: b)/imageHistogram.histoGet(r, g: g, b: b)
+            result.append(Double(index>1 ? 1 : index))
+        }
         
+        return result
     }
     
     // MARK: Utility functions
