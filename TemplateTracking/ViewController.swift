@@ -23,11 +23,46 @@ class ViewController: NSViewController {
     
     @IBAction func Track(sender: AnyObject) {
         // access and convert images here
-        
         var img = leftImageView.image?.CGImage
         
-        var width = CGImageGetWidth(img);
-        var height = CGImageGetHeight(img);
+        getRGBFromImage(img!)
+    }
+    
+    func getRGBFromImage(imageRef: CGImageRef) -> [Double] {
+        let width = CGImageGetWidth(imageRef)
+        let height = CGImageGetHeight(imageRef)
+        let bitsPerComponent = CGImageGetBitsPerComponent(imageRef)
+        let bytesPerRow = CGImageGetBytesPerRow(imageRef)
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        var rawData = UnsafeMutablePointer<Void>.alloc(bytesPerRow*height)
+        
+        let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
+        
+        let context = CGBitmapContextCreate(rawData, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo | CGBitmapInfo.ByteOrder32Big)
+        CGContextDrawImage(context, CGRectMake(CGFloat(0), CGFloat(0), CGFloat(width), CGFloat(height)), imageRef)
+        
+        let count = width*height
+        // rawData contains data in RGBA8888 format.
+        var result = [Double]()
+        
+        for i in 0...count {
+            var c = rawData.memory
+            rawData = rawData.advancedBy(1)
+        }
+        
+        /*for i in 0...count {
+            var red   = (rawData[byteIndex])/255.0
+            var green = (rawData[byteIndex+1])/255.0
+            var blue  = (rawData[byteIndex+2])/255.0
+            var alpha = (rawData[byteIndex+3])/255.0
+            byteIndex += bytesPerPixel;
+            
+            UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+            [result addObject:acolor];
+        }*/
+        
+        return result;
     }
     
     // MARK: Main function: Swain and Ballard's Back Projection
