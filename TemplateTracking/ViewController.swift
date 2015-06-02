@@ -7,11 +7,14 @@
 //
 
 import Cocoa
+import QTKit
 
 class ViewController: NSViewController {
     @IBOutlet weak var trackBtn: NSButton!
-    @IBOutlet weak var leftImageView: NSImageView!
-    @IBOutlet weak var rightImageView: NSImageView!
+    @IBOutlet weak var urlField: NSTextField!
+    @IBOutlet weak var findVideoBtn: NSButton!
+    
+    var movie: QTMovie
 
     // this shouldn't really move
     let targetMarker = NSView()
@@ -19,6 +22,16 @@ class ViewController: NSViewController {
     
     var largeImageViewPlaceholder: NSImageView!
     var smallImageViewPlaceholder: NSImageView!
+    
+    @IBAction func getVideo(sender: AnyObject) {
+        var url = NSURL(fileURLWithPath: urlField.stringValue)
+        
+        var newMovie: QTMovieRef = QTMovie(URL: url, error:nil)
+        
+        if (newMovie) {
+            self.setMovie(newMovie)
+        }
+    }
     
     @IBAction func Track(sender: AnyObject) {
         smallImageViewPlaceholder = leftImageView

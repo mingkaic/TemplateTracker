@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -672,73 +672,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="1226" height="689"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView fixedFrame="YES" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lxX-nm-teA">
-                                <rect key="frame" x="0.0" y="0.0" width="1226" height="689"/>
-                                <subviews>
-                                    <customView fixedFrame="YES" id="ktn-aI-ITH">
-                                        <rect key="frame" x="0.0" y="0.0" width="388" height="689"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="62e-RL-l6s">
-                                                <rect key="frame" x="147" y="293" width="95" height="17"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drag and Drop" id="UhM-Wv-Zz2">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Up7-Wg-aVx">
-                                                <rect key="frame" x="128" y="624" width="132" height="45"/>
-                                                <buttonCell key="cell" type="square" title="Track" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sNj-aM-XmH">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="17" name=".HelveticaNeueDeskInterface-Regular"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="Track:" target="XfG-lQ-9wD" id="zaW-6d-IwG"/>
-                                                </connections>
-                                            </button>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cAw-g5-FEW">
-                                                <rect key="frame" x="-3" y="-3" width="394" height="609"/>
-                                                <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="parrotHead" id="Teh-wV-8M6" customClass="dragAndDrop"/>
-                                                <connections>
-                                                    <action selector="dragAndDrop:" target="XfG-lQ-9wD" id="wRg-bA-9P5"/>
-                                                </connections>
-                                            </imageView>
-                                        </subviews>
-                                    </customView>
-                                    <customView fixedFrame="YES" id="elO-Wi-Dus">
-                                        <rect key="frame" x="398" y="0.0" width="828" height="689"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C2Z-y8-zam">
-                                                <rect key="frame" x="372" y="335" width="95" height="17"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drag and Drop" id="fkO-6E-Gh6">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kgm-ku-6gb">
-                                                <rect key="frame" x="-3" y="-3" width="834" height="693"/>
-                                                <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="parrot" id="dsP-HW-Ey3"/>
-                                                <connections>
-                                                    <action selector="dragAndDrop:" target="XfG-lQ-9wD" id="wL4-F8-QlO"/>
-                                                </connections>
-                                            </imageView>
-                                        </subviews>
-                                    </customView>
-                                </subviews>
-                                <holdingPriorities>
-                                    <real value="250"/>
-                                    <real value="250"/>
-                                </holdingPriorities>
-                            </splitView>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="40Z-6K-CeG">
+                                <rect key="frame" x="212" y="624" width="772" height="45"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="miA-ww-KHk">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wy4-e4-cqv">
+                                <rect key="frame" x="20" y="621" width="132" height="48"/>
+                                <buttonCell key="cell" type="square" title="Find Video" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V6A-L2-tGY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="getVideo:" target="XfG-lQ-9wD" id="7Wh-pj-sRu"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Up7-Wg-aVx">
+                                <rect key="frame" x="20" y="561" width="132" height="45"/>
+                                <buttonCell key="cell" type="square" title="Track" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sNj-aM-XmH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="17" name=".HelveticaNeueDeskInterface-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="Track:" target="XfG-lQ-9wD" id="zaW-6d-IwG"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="leftImageView" destination="cAw-g5-FEW" id="zET-FY-DV9"/>
-                        <outlet property="rightImageView" destination="Kgm-ku-6gb" id="2iy-UY-LT3"/>
+                        <outlet property="findVideoBtn" destination="Wy4-e4-cqv" id="szS-TD-ypW"/>
                         <outlet property="trackBtn" destination="Up7-Wg-aVx" id="Vj0-lM-BeI"/>
+                        <outlet property="urlField" destination="40Z-6K-CeG" id="TlU-nX-VrL"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -746,8 +713,4 @@
             <point key="canvasLocation" x="448" y="864.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="parrot" width="1024" height="768"/>
-        <image name="parrotHead" width="255" height="186"/>
-    </resources>
 </document>
