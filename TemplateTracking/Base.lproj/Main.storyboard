@@ -675,13 +675,6 @@
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Hq-3D-cP8">
                                 <rect key="frame" x="351" y="0.0" width="875" height="689"/>
                                 <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kgm-ku-6gb">
-                                        <rect key="frame" x="-3" y="-3" width="881" height="695"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="parrot" id="dsP-HW-Ey3"/>
-                                        <connections>
-                                            <action selector="dragAndDrop:" target="XfG-lQ-9wD" id="wL4-F8-QlO"/>
-                                        </connections>
-                                    </imageView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="62e-RL-l6s">
                                         <rect key="frame" x="390" y="336" width="95" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drag and Drop" id="UhM-Wv-Zz2">
@@ -690,18 +683,18 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kgm-ku-6gb">
+                                        <rect key="frame" x="-3" y="-3" width="881" height="695"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="parrot" id="dsP-HW-Ey3"/>
+                                        <connections>
+                                            <action selector="dragAndDrop:" target="XfG-lQ-9wD" id="wL4-F8-QlO"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bu-PB-u5o">
                                 <rect key="frame" x="0.0" y="0.0" width="352" height="689"/>
                                 <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cAw-g5-FEW">
-                                        <rect key="frame" x="-3" y="-3" width="358" height="494"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="WhitePlainDot" id="Teh-wV-8M6"/>
-                                        <connections>
-                                            <action selector="dragAndDrop:" target="XfG-lQ-9wD" id="wRg-bA-9P5"/>
-                                        </connections>
-                                    </imageView>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Up7-Wg-aVx">
                                         <rect key="frame" x="110" y="624" width="132" height="45"/>
                                         <buttonCell key="cell" type="square" title="Track" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sNj-aM-XmH">
@@ -728,6 +721,13 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cAw-g5-FEW">
+                                        <rect key="frame" x="-3" y="-3" width="358" height="494"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="parrotHead" id="Teh-wV-8M6"/>
+                                        <connections>
+                                            <action selector="dragAndDrop:" target="XfG-lQ-9wD" id="wRg-bA-9P5"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                             </customView>
                         </subviews>
@@ -745,7 +745,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="WhitePlainDot" width="504" height="360"/>
         <image name="parrot" width="1024" height="768"/>
+        <image name="parrotHead" width="255" height="186"/>
     </resources>
 </document>

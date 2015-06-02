@@ -22,30 +22,71 @@ class ViewController: NSViewController {
     var smallImageViewPlaceholder: NSImageView!
     
     @IBAction func Track(sender: AnyObject) {
-        // access and convert images here
-        var img = leftImageView.image?.CGImage
-        var pixels = getRGBFromImage(img!)
-
-        for i in 0...pixels.count-1 {
-            modelHistogram.histoCount(Double(pixels[i].r), g: Double(pixels[i].g), b: Double(pixels[i].b))
-        }
+        smallImageViewPlaceholder = leftImageView
+        largeImageViewPlaceholder = rightImageView
         
-        // get the background and start projecting
-        var targetImg = rightImageView.image?.CGImage
-        var bp = backProjectionFind(targetImg!)
+        //var backgroundQueue = NSOperationQueue()
+        //backgroundQueue.addOperationWithBlock({
+            
+            // access and convert images here
+            var img = self.leftImageView.image?.CGImage
+            var pixels = self.getRGBFromImage(img!)
+            
+            for i in 0...pixels.count-1 {
+                self.modelHistogram.histoCount(Double(pixels[i].r), g: Double(pixels[i].g), b: Double(pixels[i].b))
+            }
+            
+            // get the background and start projecting
+            var targetImg = self.rightImageView.image?.CGImage
+            var bp = self.backProjectionFind(targetImg!)
+        
+            // obtain the convolution to find the template location
+        var index = 0
+        
+        var max = Double(0)
+        for x in 0...bp.count-1 {
+            if bp[x] > max {
+                max = bp[x]
+                index = x
+            }
+        }
         
         var sW = CGImageGetWidth(img)
         var sH = CGImageGetHeight(img)
         var bW = CGImageGetWidth(targetImg)
         var bH = CGImageGetHeight(targetImg)
-        
-        var compareMatrix = [Double]()
-        
-        for x in 0...bW-sW-1 {
+        let maxX = index % bW
+        let maxY = index / bW
+            /*
+            var index = 0
+            var maxIndex = 0
+            var max = Double(0)
+            
             for y in 0...bH-sH-1 {
-                
+                for x in 0...bW-sW-1 {
+                    var compareValue = Double(0)
+                    for h in 0...sH-1 {
+                        compareValue += bp[x+(y+sH)*bW...x+sW+(y+sH)*bW-1].reduce(0, combine: +)
+                    }
+                    if (compareValue > max) {
+                        maxIndex = index
+                    }
+                    index++
+                }
             }
-        }
+            
+            let maxX = maxIndex % (bW-sW)
+            let maxY = maxIndex / (bW-sW)*/
+        // my PoV
+        // x goes from left to right
+        // y goes from up to down
+        
+        // rectangle's PoV
+        // x goes from left to right
+        // y goes from down to up
+            self.createSearchRectangle(maxX-sW/2, y: bH-maxY-sH, width: sW, height: sH)
+            
+        //})
     }
     
     func getRGBFromImage(imageRef: CGImageRef) -> [PixelRGB] {
@@ -110,8 +151,17 @@ class ViewController: NSViewController {
     }
     
     // create UI 'search rectangle'
-    func createSearchRectangle(smallImageView: NSImageView, largeImageView: NSImageView) {
-        
+    func createSearchRectangle(x: Int, y: Int, width: Int, height: Int) {
+        NSOperationQueue.mainQueue().addOperationWithBlock({
+            self.movingSearchRectangle.frame = CGRect(x: x, y: y, width: width, height: height)
+            
+            self.movingSearchRectangle.wantsLayer = true
+            self.movingSearchRectangle.acceptsTouchEvents = false
+            self.movingSearchRectangle.layer?.borderWidth = 5.0
+            self.movingSearchRectangle.layer?.borderColor = NSColor.grayColor().CGColor
+            
+            self.largeImageViewPlaceholder.addSubview(self.movingSearchRectangle);
+        })
     }
     
     // reposition the 'search rectangle'

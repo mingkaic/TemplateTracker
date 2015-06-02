@@ -8,15 +8,19 @@
 
 import Foundation
 
+let firstD = Double(8)
+let secondD = Double(8)
+let thirdD = Double(8)
+
 private func histoMapping(r: Double, g: Double, b: Double) -> Int {
     var x = r-g
     var y = 2*b-r-g
     var z=r+g+b
     
     // assume rgb values are between 0 and 255
-    x=(x+255)*16/510 // 0 to 15
-    y=(y+510)*16/1020 // 0 to 15
-    z=z*8/765 // 0 to 7
+    x=(x+255)*firstD/510 // 0 to 15
+    y=(y+510)*secondD/1020 // 0 to 15
+    z=z*thirdD/765 // 0 to 7
     
     let i = Int(x)+Int(y)*16+Int(z)*8
     
@@ -24,10 +28,10 @@ private func histoMapping(r: Double, g: Double, b: Double) -> Int {
 }
 
 struct ColorHistogram {
-    var histo = NSMutableArray(capacity: 2048)
+    var histo = NSMutableArray(capacity: Int(firstD*secondD*thirdD))
     
     init() {
-        for i in 0...2047 {
+        for i in 0...Int(firstD*secondD*thirdD) {
             histo.addObject(Int(0))
         }
     }
