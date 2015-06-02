@@ -8,9 +8,9 @@
 
 import Foundation
 
-let firstD = Double(8)
-let secondD = Double(8)
-let thirdD = Double(8)
+let firstD = Double(10)
+let secondD = Double(10)
+let thirdD = Double(10)
 
 private func histoMapping(r: Double, g: Double, b: Double) -> Int {
     var x = r-g

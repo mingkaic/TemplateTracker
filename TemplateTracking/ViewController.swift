@@ -10,12 +10,11 @@ import Cocoa
 
 class ViewController: NSViewController {
     @IBOutlet weak var trackBtn: NSButton!
-    @IBOutlet weak var textField: NSTextField!
     @IBOutlet weak var leftImageView: NSImageView!
     @IBOutlet weak var rightImageView: NSImageView!
 
     // this shouldn't really move
-    let movingSearchRectangle = NSView()
+    let targetMarker = NSView()
     let modelHistogram = ColorHistogram()
     
     var largeImageViewPlaceholder: NSImageView!
@@ -25,8 +24,8 @@ class ViewController: NSViewController {
         smallImageViewPlaceholder = leftImageView
         largeImageViewPlaceholder = rightImageView
         
-        //var backgroundQueue = NSOperationQueue()
-        //backgroundQueue.addOperationWithBlock({
+        var backgroundQueue = NSOperationQueue()
+        backgroundQueue.addOperationWithBlock({
             
             // access and convert images here
             var img = self.leftImageView.image?.CGImage
@@ -41,22 +40,23 @@ class ViewController: NSViewController {
             var bp = self.backProjectionFind(targetImg!)
         
             // obtain the convolution to find the template location
-        var index = 0
-        
-        var max = Double(0)
-        for x in 0...bp.count-1 {
-            if bp[x] > max {
-                max = bp[x]
-                index = x
+            var index = 0
+            
+            var max = Double(0)
+            for x in 0...bp.count-1 {
+                if bp[x] > max {
+                    max = bp[x]
+                    index = x
+                }
             }
-        }
-        
-        var sW = CGImageGetWidth(img)
-        var sH = CGImageGetHeight(img)
-        var bW = CGImageGetWidth(targetImg)
-        var bH = CGImageGetHeight(targetImg)
-        let maxX = index % bW
-        let maxY = index / bW
+            
+            var sW = CGImageGetWidth(img)
+            var sH = CGImageGetHeight(img)
+            var bW = CGImageGetWidth(targetImg)
+            var bH = CGImageGetHeight(targetImg)
+            let maxX = index % bW
+            let maxY = index / bW
+            
             /*
             var index = 0
             var maxIndex = 0
@@ -77,16 +77,14 @@ class ViewController: NSViewController {
             
             let maxX = maxIndex % (bW-sW)
             let maxY = maxIndex / (bW-sW)*/
-        // my PoV
-        // x goes from left to right
-        // y goes from up to down
-        
-        // rectangle's PoV
-        // x goes from left to right
-        // y goes from down to up
-            self.createSearchRectangle(maxX-sW/2, y: bH-maxY-sH, width: sW, height: sH)
             
-        //})
+            // my PoV --------------------- rectangle's PoV
+            // x goes from left to right -- x goes from left to right
+            // y goes from up to down ----- y goes from down to up
+            let squareSize = (sW > sH ? sH : sW)/10
+            self.createTargetMarker(self.largeImageViewPlaceholder, x: maxX, y: bH-sH, width: squareSize, height: squareSize)
+            
+        })
     }
     
     func getRGBFromImage(imageRef: CGImageRef) -> [PixelRGB] {
@@ -147,20 +145,21 @@ class ViewController: NSViewController {
     
     // check image sizes - can they even be compared?
     func checkImageComparable() -> Bool {
+        
         return true;
     }
     
     // create UI 'search rectangle'
-    func createSearchRectangle(x: Int, y: Int, width: Int, height: Int) {
+    func createTargetMarker(img:NSImageView, x: Int, y: Int, width: Int, height: Int) {
         NSOperationQueue.mainQueue().addOperationWithBlock({
-            self.movingSearchRectangle.frame = CGRect(x: x, y: y, width: width, height: height)
+            self.targetMarker.frame = CGRect(x: x, y: y, width: width, height: height)
             
-            self.movingSearchRectangle.wantsLayer = true
-            self.movingSearchRectangle.acceptsTouchEvents = false
-            self.movingSearchRectangle.layer?.borderWidth = 5.0
-            self.movingSearchRectangle.layer?.borderColor = NSColor.grayColor().CGColor
+            self.targetMarker.wantsLayer = true
+            self.targetMarker.acceptsTouchEvents = false
+            self.targetMarker.layer?.borderWidth = 5.0
+            self.targetMarker.layer?.borderColor = NSColor.grayColor().CGColor
             
-            self.largeImageViewPlaceholder.addSubview(self.movingSearchRectangle);
+            img.addSubview(self.targetMarker);
         })
     }
     
@@ -169,15 +168,16 @@ class ViewController: NSViewController {
         return (0,0,0,0)
     }
     
-    // simple resize
-    func resize(sourceImage: NSImage, scaleFactor: Float) -> NSImage {
-        return NSImage()
-    }
-    
     // MARK: UI functions
     
     @IBAction func dragAndDrop(sender: AnyObject) {
+        self.targetMarker.layer?.borderColor = NSColor.clearColor().CGColor
         
+        if leftImageView.image != nil && rightImageView.image != nil {
+            trackBtn.enabled = true
+        } else {
+            trackBtn.enabled = false
+        }
     }
     
     override func viewDidLoad() {
