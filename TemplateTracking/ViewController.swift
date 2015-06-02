@@ -57,27 +57,6 @@ class ViewController: NSViewController {
             let maxX = index % bW
             let maxY = index / bW
             
-            /*
-            var index = 0
-            var maxIndex = 0
-            var max = Double(0)
-            
-            for y in 0...bH-sH-1 {
-                for x in 0...bW-sW-1 {
-                    var compareValue = Double(0)
-                    for h in 0...sH-1 {
-                        compareValue += bp[x+(y+sH)*bW...x+sW+(y+sH)*bW-1].reduce(0, combine: +)
-                    }
-                    if (compareValue > max) {
-                        maxIndex = index
-                    }
-                    index++
-                }
-            }
-            
-            let maxX = maxIndex % (bW-sW)
-            let maxY = maxIndex / (bW-sW)*/
-            
             // my PoV --------------------- rectangle's PoV
             // x goes from left to right -- x goes from left to right
             // y goes from up to down ----- y goes from down to up

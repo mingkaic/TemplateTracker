@@ -39,6 +39,7 @@
 		981F507A1B1CFF5400D6B99E /* YellowPlain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = YellowPlain.jpg; sourceTree = "<group>"; };
 		981F507C1B1D0AEE00D6B99E /* WhitePlainDot.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WhitePlainDot.jpeg; sourceTree = "<group>"; };
 		981F507E1B1D52F600D6B99E /* dragAndDrop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dragAndDrop.swift; sourceTree = "<group>"; };
+		983F57341B1E2F39002436CA /* ballTest.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ballTest.mp4; sourceTree = "<group>"; };
 		98ABB8701B1B740D00CE20E6 /* TemplateTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemplateTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98ABB8741B1B740D00CE20E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98ABB8751B1B740D00CE20E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		98ABB8721B1B740D00CE20E6 /* TemplateTracking */ = {
 			isa = PBXGroup;
 			children = (
+				983F57341B1E2F39002436CA /* ballTest.mp4 */,
 				981F507C1B1D0AEE00D6B99E /* WhitePlainDot.jpeg */,
 				981F50781B1CFE4F00D6B99E /* WhitePlain.jpg */,
 				981F507A1B1CFF5400D6B99E /* YellowPlain.jpg */,
